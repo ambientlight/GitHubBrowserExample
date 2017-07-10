@@ -195,8 +195,8 @@ class MainViewRoutable: Routable {
         _ routeElementIdentifier: RouteElementIdentifier,
         animated: Bool,
         completionHandler: @escaping RoutingCompletionHandler) {
-            // no-op, since this is called when VC is already popped.
-            completionHandler()
+        
+        (self.viewController as? UINavigationController)?.popViewController(true, completion: completionHandler)
     }
 }
 

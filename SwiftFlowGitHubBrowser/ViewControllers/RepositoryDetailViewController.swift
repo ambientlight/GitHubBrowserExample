@@ -47,16 +47,6 @@ class RepositoryDetailViewController: UIViewController, StoreSubscriber {
         store.unsubscribe(self)
     }
 
-    override func didMove(toParentViewController parent: UIViewController?) {
-        if parent == nil {
-            // Required to update the route, when this VC was dismissed through back button from
-            // NavigationController, since we can't intercept the back button
-            if store.state.navigationState.route == [mainViewRoute, repositoryDetailRoute] {
-                store.dispatch(SetRouteAction([mainViewRoute]))
-            }
-        }
-    }
-
     // MARK: State Updates
 
     func newState(state: (selectedRepository: Repository?, isBookmarked: Bool)) {
